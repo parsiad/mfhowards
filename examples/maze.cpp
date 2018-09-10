@@ -33,24 +33,37 @@ using namespace std;
 ///////////////////
 
 constexpr double p_works = .8;  // Probability that robot works correctly
+
 constexpr double discount = 1.; // Discount factor (1 means no discount)
 
-enum direction { north, east, south, west }; // Cardinal directions
-enum tile { E /* End State */, O /* Walkable */, X /* Obstructed */ };
+// The map consists of tiles of type O and X, signifying walkable and
+// obstructed tiles.
+// There is also a special tile of type E, which signifies that the robot has
+// reached an exit.
+enum tile { E, O, X };
 
-constexpr int m = 3, n = 4;
-constexpr tile maze[m][n] = {
+constexpr int m = 3, n = 4; // Size of the map
+
+constexpr tile maze[m][n] = { // The map
   {O, O, O, E},
   {O, X, O, E},
   {O, O, O, O},
 };
-constexpr double rewards[m][n] = {
+
+constexpr double rewards[m][n] = { // Rewards corresponding to each map tile
   {-0.04, -0.04, -0.04, +1.00},
   {-0.04, +0.00, -0.04, -1.00},
   {-0.04, -0.04, -0.04, -0.04},
 };
 
-double P(int i, int j, direction c); // Function signature for transition matrix
+enum direction { north, east, south, west }; // Cardinal directions
+
+// Each state is represented as i = x + n * y, where (x, y) is a map index.
+// There is also an additional state, i = m * n, which the robot is sent to
+// after landing on a tile of type E.
+// The transition from state i to state j, given that the robot is facing in
+// direction c, is given by P(i, j, c).
+double P(int i, int j, direction c);
 
 int main() {
 
@@ -69,15 +82,13 @@ int main() {
   };
 
   const auto b = [&](int i, direction) {
-    if (i == m * n) {
-      return 0.;
-    }
+    if (i == m * n) { return 0.; }
     const int x = i % n, y = i / n;
     return rewards[y][x];
   };
 
   auto results = howards_alg(bellman_eq_from_lambdas<direction>(
-      m * n + 1, // Number of states (+1 for sink state i == m * n)
+      m * n + 1, // Number of states (+1 for state i = m * n)
       {north, east, south, west}, // Controls are the cardinal directions
       A, b));
 
@@ -103,10 +114,6 @@ int main() {
 ///////////////////////
 
 double P(int i, int j, direction c) {
-
-  // We have one state per node in the map along with an additional "sink"
-  // state, i == m * n. The robot is sent to the sink state when it reaches a
-  // tile of type tile::E, signifying the end of the game.
 
   // Convert the node i to its x and y coordinates
   const int xi = i % n;
