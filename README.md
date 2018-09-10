@@ -89,7 +89,7 @@ public:
 	
 	/*
 	   FILL THIS IN: This method should...
-	   - Look for a control that c* = (c*_1, ..., c*_n) that minimizes A(c)x - b(c), where n = rows().
+	   - Look for a control that c* = (c*_1, c*_2, ..., c*_rows()) that minimizes A(c)x - b(c).
 	   - Store A(c*) and b(c*) in A_c and b_c.
 	 */
 	void improve(const Eigen::VectorXd &x);
