@@ -3,13 +3,13 @@ A matrix free implementation of policy iteration (a.k.a. Howard's algorithm) in 
 
 ## Description of Howard's algorithm
 
-Let _C_ be a finite set.
-For each _c_ in _C_, let _A(c)_ and _b(c)_ be a real square matrix and real vector.
+Let _C = C1 x C2 x ... x Cn_ be a finite set.
+For each _c = (c1, c2, ..., cn)_ in _C_, let _A(c)_ and _b(c)_ be an _n x n_ matrix and an _n x 1_ real vector such that the _i_-th row of _A(c)_ and _b(c)_ depend only on _i_.
 Howard's algorithm is used to find a vector _v_ which satisfies the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equation#The_Bellman_equation):
 
 ![](https://latex.codecogs.com/gif.latex?\min_{c&space;\\in&space;C}&space;\\left\\{&space;A(c)&space;v&space;-&space;b(c)&space;\\right\\}=0)
 
-**Remark:** _For conditions on A(c) to ensure that the algorithm returns a valid solution v, see [this paper](https://arxiv.org/pdf/1510.03928.pdf) or [this one](https://hal.inria.fr/file/index/docid/179549/filename/RR-zidani.pdf))._
+**Remark:** _A sufficient condition for Howard's algorithm to return the unique solution is for A(c) to be a monotone matrix for all c; see [this paper](https://arxiv.org/pdf/1510.03928.pdf) or [this one](https://hal.inria.fr/file/index/docid/179549/filename/RR-zidani.pdf)) for details and further results._
 
 ## Boiler-plate code
 
@@ -23,10 +23,12 @@ using namespace mfhowards;
 using namespace std;
 
 int main() {
-	// Example with three controls
-	enum MyControlType { c1, c2, c3 };
-	// You are not restricted to using an enum for your control type.
-	// e.g., to use doubles, remove the above and replace it with "typedef double MyControlType;"
+	// Example with control set C = {eat, pray, code} x ... x {eat, pray, code}
+	// i.e., in each state, the controller can eat, pray, or code.
+	enum MyControlType { eat, pray, code };
+	
+	// You are not restricted to using an enum for your control type!
+	// Any typename (e.g., double) works.
 
 	const auto A = [&](int i, int j, MyControlType c) {
 		// FILL THIS IN: Return a double corresponding to the (i, j)-th entry of A(c)
@@ -40,9 +42,9 @@ int main() {
 
 	auto results = howards_alg(
 		bellman_eq_from_lambdas<MyControlType>(
-			num_states,     // Number of states
-			{ c1, c2, c3 }, // List of all controls
-			A, b            // Matrix and vector
+			num_states,          // Number of states
+			{ eat, pray, code }, // List of all controls
+			A, b                 // Matrix and vector
 		)
 	);
 
