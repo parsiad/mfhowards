@@ -60,7 +60,7 @@ See [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/example
 
 The problem is described in detail in
 * [a blog post by Massimiliano Patacchiola](https://mpatacchiola.github.io/blog/2016/12/09/dissecting-reinforcement-learning.html#the-bellman-equation)
-* Chapter 17.1 of [the Stuart and Norvig book](http://thuvien.thanglong.edu.vn:8081/dspace/handle/DHTL_123456789/4010)
+* Chapter 17.1 of [the Stuart and Norvig book](http://aima.cs.berkeley.edu/)
 
 ## Advanced usage
 
