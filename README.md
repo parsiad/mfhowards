@@ -56,7 +56,7 @@ int main() {
 
 ![](https://mpatacchiola.github.io/blog/images/reinforcement_learning_simple_world.png)
 
-See the [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/examples/maze.cpp) for an implementation of the robot navigation problem pictured above.
+See [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/examples/maze.cpp) for an implementation of the robot navigation problem pictured above.
 
 The problem is described in detail in
 * [a blog post by Massimiliano Patacchiola](https://mpatacchiola.github.io/blog/2016/12/09/dissecting-reinforcement-learning.html#the-bellman-equation)
