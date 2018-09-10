@@ -1,5 +1,5 @@
 # mfhowards
-A matrix free implementation of policy iteration (a.k.a. Howard's algorithm) in C++ to solve Markov decision processes (MDPs).
+A matrix free implementation of policy iteration (a.k.a. Howard's algorithm) in C++.
 
 ## Description of Howard's algorithm
 
@@ -48,7 +48,7 @@ int main() {
 
 ## Example
 
-See the [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/examples/maze.cpp) for an implementation of the MDP in Chapter 17.1 of [the Stuart and Norvig book](http://thuvien.thanglong.edu.vn:8081/dspace/handle/DHTL_123456789/4010).
+See the [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/examples/maze.cpp) for an implementation of the Markov Decision Process (MDP) in Chapter 17.1 of [the Stuart and Norvig book](http://thuvien.thanglong.edu.vn:8081/dspace/handle/DHTL_123456789/4010).
 Alternatively, you can refer to [a blog post by Massimiliano Patacchiola](https://mpatacchiola.github.io/blog/2016/12/09/dissecting-reinforcement-learning.html#the-bellman-equation) which summarizes the chapter.
 
 ## Advanced usage
@@ -72,7 +72,7 @@ private:
 	
 public:
 	
-	int rows() const; // Number of states in MDP
+	int rows() const; // Number of rows in A(c) and b(c)
 	
 	/*
 	 * This implements the policy improvement step of Howard's algorithm:
