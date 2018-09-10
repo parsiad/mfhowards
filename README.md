@@ -52,8 +52,13 @@ int main() {
 
 ## Example
 
-See the [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/examples/maze.cpp) for an implementation of the Markov Decision Process (MDP) in Chapter 17.1 of [the Stuart and Norvig book](http://thuvien.thanglong.edu.vn:8081/dspace/handle/DHTL_123456789/4010).
-Alternatively, you can refer to [a blog post by Massimiliano Patacchiola](https://mpatacchiola.github.io/blog/2016/12/09/dissecting-reinforcement-learning.html#the-bellman-equation) which summarizes the chapter.
+![](https://mpatacchiola.github.io/blog/images/reinforcement_learning_simple_world.png)
+
+See the [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/examples/maze.cpp) for an implementation of the robot navigation problem pictured above.
+
+The problem is described in detail in
+* [a blog post by Massimiliano Patacchiola](https://mpatacchiola.github.io/blog/2016/12/09/dissecting-reinforcement-learning.html#the-bellman-equation)
+* Chapter 17.1 of [the Stuart and Norvig book](http://thuvien.thanglong.edu.vn:8081/dspace/handle/DHTL_123456789/4010)
 
 ## Advanced usage
 
