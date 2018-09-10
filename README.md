@@ -13,6 +13,8 @@ Howard's algorithm is used to find a vector _v_ which satisfies the [Bellman equ
 
 ## Boiler-plate code
 
+Before trying to fill in the boiler-plate code below, I recommend also looking through the [example](#example).
+
 ```cpp
 #include <mfhowards>
 #include <iostream>
@@ -23,9 +25,8 @@ using namespace std;
 int main() {
 	// Example with three controls
 	enum MyControlType { c1, c2, c3 };
-	
 	// You are not restricted to using an enum for your control type.
-	// e.g., to use doubles, remove the above line and replace it with "typedef double MyControlType;"
+	// e.g., to use doubles, remove the above and replace it with "typedef double MyControlType;"
 
 	const auto A = [&](int i, int j, MyControlType c) {
 		// FILL THIS IN: Return a double corresponding to the (i, j)-th entry of A(c)
