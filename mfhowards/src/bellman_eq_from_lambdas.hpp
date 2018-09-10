@@ -25,6 +25,11 @@
 #ifndef MFHOWARDS_BELLMAN_EQ_FROM_LAMBDAS_HPP
 #define MFHOWARDS_BELLMAN_EQ_FROM_LAMBDAS_HPP
 
+#include <Eigen/Core>
+#include <Eigen/Dense>
+#include <Eigen/IterativeLinearSolvers>
+#include <Eigen/Sparse>
+
 #include <functional>       // std::function
 #include <initializer_list> // std::initializer_list
 #include <limits>           // std::numeric_limits
