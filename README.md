@@ -21,14 +21,15 @@ using namespace mfhowards;
 using namespace std;
 
 int main() {
+	// Example with three controls
 	enum MyControlType { c1, c2, c3 };
 
 	const auto A = [&](int i, int j, MyControlType c) {
-		// TODO: Return a double corresponding to the (i, j)-th entry of A(c)
+		// FILL THIS IN: Return a double corresponding to the (i, j)-th entry of A(c)
 	};
 
 	const auto b = [&](int i, MyControlType c) {
-		// TODO: Return a double corresponding to the i-th entry of b(c)
+		// FILL THIS IN: Return a double corresponding to the i-th entry of b(c)
 	};
 
 	auto results = howards_alg(
@@ -39,6 +40,7 @@ int main() {
 		)
 	);
 
+	// Print results and return status
 	cout << results;
 	return results.status;
 }
