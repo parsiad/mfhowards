@@ -9,6 +9,10 @@ Howard's algorithm is used to find a vector _v_ which satisfies the so-called Be
 
 where _C_ is a finite set, _A(c)_ is a real square matrix, _b(c)_ is a real vector.
 
+**Remark:** _For conditions on the matrix A(c) so that Howard's algorithm returns a valid solution v, see [this paper](https://arxiv.org/pdf/1510.03928.pdf) or [this one](https://hal.inria.fr/file/index/docid/179549/filename/RR-zidani.pdf))._
+
+### Boiler-plate code
+
 ```cpp
 #include <mfhowards>
 #include <iostream>
@@ -25,7 +29,7 @@ const auto A = [&](int i, int j, MyControlType c) {
 
 const auto b = [&](int i, MyControlType c) {
 	// TODO: Return a double corresponding to the
-	         i-th entry of b(c)
+	//       i-th entry of b(c)
 };
 
 auto results = howards_alg(
@@ -41,9 +45,7 @@ cout << results;
 
 **Remark:** While the example above uses an enum for ```MyControlType```, you can use anything you like (e.g., ```typedef double MyControlType```).
 
-**Remark:** _For conditions on the matrix A(c) so that Howard's algorithm returns a valid solution v, see [this paper](https://arxiv.org/pdf/1510.03928.pdf) or [this one](https://hal.inria.fr/file/index/docid/179549/filename/RR-zidani.pdf))._
-
-## Example
+### Example
 
 See the [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/examples/maze.cpp) for an implementation of the MDP in Chapter 17.1 of [the Stuart and Norvig book](http://thuvien.thanglong.edu.vn:8081/dspace/handle/DHTL_123456789/4010).
 Alternatively, you can refer to [a blog post by Massimiliano Patacchiola](https://mpatacchiola.github.io/blog/2016/12/09/dissecting-reinforcement-learning.html#the-bellman-equation) which summarizes the chapter.
