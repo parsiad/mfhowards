@@ -26,10 +26,12 @@ int main() {
 
 	const auto A = [&](int i, int j, MyControlType c) {
 		// FILL THIS IN: Return a double corresponding to the (i, j)-th entry of A(c)
+		return 0.;
 	};
 
 	const auto b = [&](int i, MyControlType c) {
 		// FILL THIS IN: Return a double corresponding to the i-th entry of b(c)
+		return 0.;
 	};
 
 	auto results = howards_alg(
