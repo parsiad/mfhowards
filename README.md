@@ -20,27 +20,28 @@ where _C_ is a finite set, _A(c)_ is a real square matrix, _b(c)_ is a real vect
 using namespace mfhowards;
 using namespace std;
 
-enum MyControlType { c1, c2, c3 };
+int main() {
+	enum MyControlType { c1, c2, c3 };
 
-const auto A = [&](int i, int j, MyControlType c) {
-	// TODO: Return a double corresponding to the
-	//       (i, j)-th entry of A(c)
-};
+	const auto A = [&](int i, int j, MyControlType c) {
+		// TODO: Return a double corresponding to the (i, j)-th entry of A(c)
+	};
 
-const auto b = [&](int i, MyControlType c) {
-	// TODO: Return a double corresponding to the
-	//       i-th entry of b(c)
-};
+	const auto b = [&](int i, MyControlType c) {
+		// TODO: Return a double corresponding to the i-th entry of b(c)
+	};
 
-auto results = howards_alg(
-	bellman_eq_from_lambdas<MyControlType>(
-		num_states,     // Number of states
-		{ c1, c2, c3 }, // Control list
-		A, b            // Matrix and vector
-	)
-);
+	auto results = howards_alg(
+		bellman_eq_from_lambdas<MyControlType>(
+			num_states,     // Number of states
+			{ c1, c2, c3 }, // Control list
+			A, b            // Matrix and vector
+		)
+	);
 
-cout << results;
+	cout << results;
+	return results.status;
+}
 ```
 
 **Remark:** While the example above uses an enum for ```MyControlType```, you can use anything you like (e.g., ```typedef double MyControlType```).
@@ -74,24 +75,20 @@ public:
 	int rows() const; // Number of states in MDP
 	
 	/*
-	 * This implements the policy improvement step
-	 * of Howard's algorithm:
+	 * This implements the policy improvement step of Howard's algorithm:
 	 * 
-	 * 1. Look for a control that c* that minimizes
-	 *    A(c)x - b(c).
+	 * 1. Look for a control that c* that minimizes A(c)x - b(c).
 	 * 2. Store A(c*) and b(c*) in A_c and b_c.
 	 */
 	void improve(const Eigen::VectorXd &x);
 	
 	/*
-	 * This implements the policy evaluation step
-	 * of Howard's algorithm:
+	 * This implements the policy evaluation step of Howard's algorithm:
 	 * 
 	 * 1. Solve the linear system A_c x = b_c.
 	 * 2. Return the solution x.
 	 * 
-	 * The size of the returned vector should equal
-	 * the integer returned by rows().
+	 * The size of the returned vector should equal the integer returned by rows().
 	 */
 	Eigen::VectorXd rhs() const;
 
