@@ -74,8 +74,8 @@ template <typename Beq>
 results howards_alg(Beq &&beq);
 ```
 
-You should creat your own ```Beq``` type to implement various methods called by howards_alg.
-Some boiler-plate for a ``Beq`` type is given below:
+You can create your own ```Beq``` type to implement various methods called by howards_alg.
+Some boiler-plate is given below:
 
 ```cpp
 class MyBeqType {
