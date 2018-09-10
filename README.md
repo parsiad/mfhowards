@@ -32,12 +32,12 @@ int main() {
 	// Any typename (e.g., double) works.
 
 	const auto A = [&](int i, int j, MyControlType c) {
-		// FILL THIS IN: Return a double corresponding to the (i, j)-th entry of A(c)
+		// FILL THIS IN: Return the (i, j)-th entry of A(c)
 		return 0.;
 	};
 
 	const auto b = [&](int i, MyControlType c) {
-		// FILL THIS IN: Return a double corresponding to the i-th entry of b(c)
+		// FILL THIS IN: Return the i-th entry of b(c)
 		return 0.;
 	};
 
@@ -93,7 +93,7 @@ public:
 	
 	/*
 	   FILL THIS IN: This method should...
-	   - Look for a control that c* = (c*_1, c*_2, ..., c*_rows()) that minimizes A(c)x - b(c).
+	   - Find a control c* = (c*_1, c*_2, ..., c*_rows()) minimizing A(c)x - b(c).
 	   - Store A(c*) and b(c*) in A_c and b_c.
 	 */
 	void improve(const Eigen::VectorXd &x);
