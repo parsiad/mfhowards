@@ -8,7 +8,7 @@ For each _c = (c1, c2, ..., cn)_ in _C_, let _A(c)_ and _b(c)_ be an _n x n_ mat
 
 Howard's algorithm is used to find a vector _v_ which satisfies the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equation#The_Bellman_equation):
 
-![](https://latex.codecogs.com/gif.latex?\min_{c&space;\\in&space;C}&space;\\left\\{&space;A(c)&space;v&space;-&space;b(c)&space;\\right\\}=0)
+![](https://latex.codecogs.com/gif.latex?%5Cmin_%7Bc%5Cin%20C%7D%5C%7BA%28c%29v-b%28c%29%5C%7D%3D0)
 
 **Remark:** _A sufficient condition for Howard's algorithm to return the unique solution is for A(c) to be a monotone matrix for all c; see [this paper](https://arxiv.org/pdf/1510.03928.pdf) or [this one](https://hal.inria.fr/file/index/docid/179549/filename/RR-zidani.pdf)) for details and further results._
 
