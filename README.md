@@ -5,7 +5,7 @@ A matrix free implementation of policy iteration (a.k.a. Howard's algorithm) in 
 
 Howard's algorithm is used to find a vector _v_ which satisfies the so-called Bellman equation:
 
-![](https://latex.codecogs.com/gif.latex?\min_{c&space;\\in&space;C}&space;\\left\\{&space;A(c)&space;v&space;-&space;b(c)&space;\\right\\})
+![](https://latex.codecogs.com/gif.latex?\min_{c&space;\\in&space;C}&space;\\left\\{&space;A(c)&space;v&space;-&space;b(c)&space;\\right\\}=0)
 
 where _C_ is a finite set, _A(c)_ is a real square matrix, _b(c)_ is a real vector.
 
