@@ -23,6 +23,9 @@ using namespace std;
 int main() {
 	// Example with three controls
 	enum MyControlType { c1, c2, c3 };
+	
+	// You are not restricted to using an enum for your control type.
+	// e.g., to use doubles, remove the above line and replace it with "typedef double MyControlType;"
 
 	const auto A = [&](int i, int j, MyControlType c) {
 		// FILL THIS IN: Return a double corresponding to the (i, j)-th entry of A(c)
@@ -37,7 +40,7 @@ int main() {
 	auto results = howards_alg(
 		bellman_eq_from_lambdas<MyControlType>(
 			num_states,     // Number of states
-			{ c1, c2, c3 }, // Control list
+			{ c1, c2, c3 }, // List of all controls
 			A, b            // Matrix and vector
 		)
 	);
@@ -47,8 +50,6 @@ int main() {
 	return results.status;
 }
 ```
-
-**Remark:** While the example above uses an enum for ```MyControlType```, you can use anything you like (e.g., ```typedef double MyControlType```).
 
 ## Example
 
@@ -69,35 +70,34 @@ template <typename Beq>
 results howards_alg(Beq &&beq);
 ```
 
-The type ```Beq``` should implement various methods.
-Boiler plate code is given below:
+You should creat your own ```Beq``` type to implement various methods called by howards_alg.
+Some boiler-plate for a ``Beq`` type is given below:
 
 ```cpp
-class MyBeq {
-private:
+class MyBeqType {
 
-	MatrixType A_c;
-	VectorType b_c;
+private:
+	MyMatrixType A_c;
+	MyVectorType b_c;
 	
 public:
-	
-	int rows() const; // Number of rows in A(c) and b(c)
+	/*
+	   FILL THIS IN: This method should...
+	   - Return the number of rows in A(c) and b(c).
+	 */
+	int rows() const;
 	
 	/*
-	 * This implements the policy improvement step of Howard's algorithm:
-	 * 
-	 * 1. Look for a control that c* that minimizes A(c)x - b(c).
-	 * 2. Store A(c*) and b(c*) in A_c and b_c.
+	   FILL THIS IN: This method should...
+	   - Look for a control that c* = (c*_1, ..., c*_n) that minimizes A(c)x - b(c), where n = rows().
+	   - Store A(c*) and b(c*) in A_c and b_c.
 	 */
 	void improve(const Eigen::VectorXd &x);
 	
 	/*
-	 * This implements the policy evaluation step of Howard's algorithm:
-	 * 
-	 * 1. Solve the linear system A_c x = b_c.
-	 * 2. Return the solution x.
-	 * 
-	 * The size of the returned vector should equal the integer returned by rows().
+	   FILL THIS IN: This method should...
+	   - Solve the linear system A_c x = b_c.
+	   - Return the solution x. The size of x should coincide with rows().
 	 */
 	Eigen::VectorXd rhs() const;
 
