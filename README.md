@@ -1,17 +1,17 @@
 # mfhowards
 A matrix free implementation of policy iteration (a.k.a. Howard's algorithm) in C++ to solve Markov decision processes (MDPs).
 
-## Basic usage
+## Description of Howard's algorithm
 
-Howard's algorithm is used to find a vector _v_ which satisfies the so-called Bellman equation:
+Let _C_ be a finite set.
+For each _c_ in _C_, let _A(c)_ and _b(c)_ be a real square matrix and real vector.
+Howard's algorithm is used to find a vector _v_ which satisfies the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equation#The_Bellman_equation):
 
 ![](https://latex.codecogs.com/gif.latex?\min_{c&space;\\in&space;C}&space;\\left\\{&space;A(c)&space;v&space;-&space;b(c)&space;\\right\\}=0)
 
-where _C_ is a finite set, _A(c)_ is a real square matrix, _b(c)_ is a real vector.
+**Remark:** _For conditions on A(c) to ensure that the algorithm returns a valid solution v, see [this paper](https://arxiv.org/pdf/1510.03928.pdf) or [this one](https://hal.inria.fr/file/index/docid/179549/filename/RR-zidani.pdf))._
 
-**Remark:** _For conditions on the matrix A(c) so that Howard's algorithm returns a valid solution v, see [this paper](https://arxiv.org/pdf/1510.03928.pdf) or [this one](https://hal.inria.fr/file/index/docid/179549/filename/RR-zidani.pdf))._
-
-### Boiler-plate code
+## Boiler-plate code
 
 ```cpp
 #include <mfhowards>
@@ -46,7 +46,7 @@ int main() {
 
 **Remark:** While the example above uses an enum for ```MyControlType```, you can use anything you like (e.g., ```typedef double MyControlType```).
 
-### Example
+## Example
 
 See the [examples/maze.cpp](https://github.com/parsiad/mfhowards/blob/master/examples/maze.cpp) for an implementation of the MDP in Chapter 17.1 of [the Stuart and Norvig book](http://thuvien.thanglong.edu.vn:8081/dspace/handle/DHTL_123456789/4010).
 Alternatively, you can refer to [a blog post by Massimiliano Patacchiola](https://mpatacchiola.github.io/blog/2016/12/09/dissecting-reinforcement-learning.html#the-bellman-equation) which summarizes the chapter.
