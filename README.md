@@ -4,7 +4,8 @@ A matrix free implementation of policy iteration (a.k.a. Howard's algorithm) in 
 ## Description of Howard's algorithm
 
 Let _C = C1 x C2 x ... x Cn_ be a finite set.
-For each _c = (c1, c2, ..., cn)_ in _C_, let _A(c)_ and _b(c)_ be an _n x n_ matrix and an _n x 1_ real vector such that the _i_-th row of _A(c)_ and _b(c)_ depend only on _i_.
+For each _c = (c1, c2, ..., cn)_ in _C_, let _A(c)_ and _b(c)_ be an _n x n_ matrix and an _n x 1_ real vector (it is understood that the _i_-th rows of _A(c)_ and _b(c)_ depend only on _ci_).
+
 Howard's algorithm is used to find a vector _v_ which satisfies the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equation#The_Bellman_equation):
 
 ![](https://latex.codecogs.com/gif.latex?\min_{c&space;\\in&space;C}&space;\\left\\{&space;A(c)&space;v&space;-&space;b(c)&space;\\right\\}=0)
